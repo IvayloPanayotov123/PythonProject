@@ -1,0 +1,36 @@
+.nav-bar {
+    background-color: #84aeb3;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.nav-menu li {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    background-color: #27a567;
+}
