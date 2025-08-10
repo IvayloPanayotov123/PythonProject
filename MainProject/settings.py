@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'MainProject.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "project",
+        "NAME": "postgres",
         "USER": "postgres",
         "PASSWORD": "12345",
         "HOST": "localhost",
@@ -142,3 +142,11 @@ PASSWORD_HASHERS = [
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+AUTH_USER_MODEL = 'accounts.AppUser'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

@@ -10,7 +10,7 @@
     <title>PC Shop</title>
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     {% include 'common/nav.html' %}
