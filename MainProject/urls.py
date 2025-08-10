@@ -21,4 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('common.urls')),
     path('account/', include('accounts.urls')),
+    path('parts/manage/cpus/', include('cpus.urls')),
+    path('parts/manage/gpus/', include('gpus.urls')),
+    path('parts/manage/rams/', include('rams.urls'))
 ]

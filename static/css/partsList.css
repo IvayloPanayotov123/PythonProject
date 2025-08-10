@@ -1,0 +1,35 @@
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.inline-form {
+    display: inline;
+    margin: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #2f6fe4;
+    color: #fff;
+}
+
+.btn-delete {
+    background: #d64545;
+    color: #fff;
+}
+
+.add-new {
+    margin-top: 10px;
+    text-align: center;
+}

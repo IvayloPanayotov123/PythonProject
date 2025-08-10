@@ -1,10 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'common/repeatables.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/parts.css' %}">
+<link rel="stylesheet" href="{% static 'css/partsList.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="parts-grid">
+
+  <section class="parts-col">
+    <h2>RAM</h2>
+    {% for ram in rams %}
+      <article class="part-card">
+        <div class="part-name">{{ ram.name }}</div>
+        <ul class="part-attrs">
+          <li><strong>Speed:</strong> {{ ram.speed }} MHz</li>
+          <li><strong>Size:</strong> {{ ram.gigabytes }} GB</li>
+          <li><strong>Score:</strong> {{ ram.score }}</li>
+        </ul>
+        <div class="card-actions">
+          <a href="{% url 'rams:edit' ram.id %}" class="btn btn-edit">Edit</a>
+          <form method="post" action="{% url 'rams:delete' ram.id %}" class="inline-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-delete">Delete</button>
+          </form>
+        </div>
+      </article>
+    {% empty %}
+      <p class="empty">No RAM available.</p>
+    {% endfor %}
+
+    <div class="add-new">
+      <a href="{% url 'rams:create' %}" class="button">Add new</a>
+    </div>
+  </section>
+
+  <section class="parts-col">
+    <h2>GPUs</h2>
+    {% for gpu in gpus %}
+      <article class="part-card">
+        <div class="part-name">{{ gpu.name }}</div>
+        <ul class="part-attrs">
+          <li><strong>VRAM:</strong> {{ gpu.vram }} GB</li>
+          <li><strong>Score:</strong> {{ gpu.score }}</li>
+        </ul>
+        <div class="card-actions">
+          <a href="{% url 'gpus:edit' gpu.id %}" class="btn btn-edit">Edit</a>
+          <form method="post" action="{% url 'gpus:delete' gpu.id %}" class="inline-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-delete">Delete</button>
+          </form>
+        </div>
+      </article>
+    {% empty %}
+      <p class="empty">No GPUs available.</p>
+    {% endfor %}
+
+    <div class="add-new">
+      <a href="{% url 'gpus:create' %}" class="button">Add new</a>
+    </div>
+  </section>
+
+  <section class="parts-col">
+    <h2>CPUs</h2>
+    {% for cpu in cpus %}
+      <article class="part-card">
+        <div class="part-name">{{ cpu.name }}</div>
+        <ul class="part-attrs">
+          <li><strong>Cores:</strong> {{ cpu.cores }}</li>
+          <li><strong>Score:</strong> {{ cpu.score }}</li>
+        </ul>
+        <div class="card-actions">
+          <a href="{% url 'cpus:edit' cpu.id %}" class="btn btn-edit">Edit</a>
+          <form method="post" action="{% url 'cpus:delete' cpu.id %}" class="inline-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-delete">Delete</button>
+          </form>
+        </div>
+      </article>
+    {% empty %}
+      <p class="empty">No CPUs available.</p>
+    {% endfor %}
+
+    <div class="add-new">
+      <a href="{% url 'cpus:create' %}" class="button">Add new</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

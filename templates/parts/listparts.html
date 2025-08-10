@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'common/repeatables.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/parts.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="parts-grid">
+
+  <section class="parts-col">
+    <h2>RAM</h2>
+    {% for ram in rams %}
+      <article class="part-card">
+        <div class="part-name">{{ ram.name }}</div>
+        <ul class="part-attrs">
+          <li><strong>Speed:</strong> {{ ram.speed }} MHz</li>
+          <li><strong>Size:</strong> {{ ram.gigabytes }} GB</li>
+          <li><strong>Score:</strong> {{ ram.score }}</li>
+        </ul>
+      </article>
+    {% empty %}
+      <p class="empty">No RAM available.</p>
+    {% endfor %}
+  </section>
+
+  <section class="parts-col">
+    <h2>GPUs</h2>
+    {% for gpu in gpus %}
+      <article class="part-card">
+        <div class="part-name">{{ gpu.name }}</div>
+        <ul class="part-attrs">
+          <li><strong>VRAM:</strong> {{ gpu.vram }} GB</li>
+          <li><strong>Score:</strong> {{ gpu.score }}</li>
+        </ul>
+      </article>
+    {% empty %}
+      <p class="empty">No GPUs available.</p>
+    {% endfor %}
+  </section>
+
+  <section class="parts-col">
+    <h2>CPUs</h2>
+    {% for cpu in cpus %}
+      <article class="part-card">
+        <div class="part-name">{{ cpu.name }}</div>
+        <ul class="part-attrs">
+          <li><strong>Cores:</strong> {{ cpu.cores }}</li>
+          <li><strong>Score:</strong> {{ cpu.score }}</li>
+        </ul>
+      </article>
+    {% empty %}
+      <p class="empty">No CPUs available.</p>
+    {% endfor %}
+  </section>
+
+</div>
+{% endblock %}

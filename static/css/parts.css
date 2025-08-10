@@ -1,0 +1,58 @@
+.parts-grid {
+    display: flex;
+    gap: 2rem;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.parts-col {
+    flex: 0 0 25%;
+    background: #84aeb3;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    min-width: 260px;
+}
+
+.parts-col h2 {
+    text-align: center;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.part-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.part-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+}
+
+.part-attrs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.part-attrs li {
+    margin: 4px 0;
+    font-size: 0.98rem;
+    color: #222;
+}
+
+.empty {
+    color: #555;
+    font-style: italic;
+}
+
+@media (max-width: 900px) {
+    .parts-col { flex: 1 1 100%; }
+}

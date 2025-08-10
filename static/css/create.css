@@ -1,0 +1,62 @@
+.create-part-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+.create-part-box {
+    background-color: #27a567;
+    padding: 2rem;
+    border: 2px solid #000;
+    border-radius: 12px;
+    min-width: 320px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+.create-part-box h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    background-color: #27a567;
+    color: white;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 0.7rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #1f8c52;
+}
+
+.error {
+    color: #ffcccc;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
