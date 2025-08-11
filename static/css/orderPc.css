@@ -1,0 +1,92 @@
+.create-pc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f8f8f8;
+}
+
+.create-pc-box {
+    background-color: #84aeb3;
+    padding: 2rem 2.5rem;
+    border: 2px solid #000;
+    border-radius: 12px;
+    min-width: 340px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: #fff;
+}
+
+.create-pc-box h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    color: #000;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #000;
+    background: #fff;
+}
+
+.price-preview {
+    margin: 1rem 0 1.2rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px dashed #000;
+    border-radius: 6px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.preview-button {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.order-button {
+    background-color: #d64545;
+    color: #fff;
+    border: 2px solid #000;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.order-button:hover {
+    background-color: #c13c3c;
+}
+
+.error {
+    color: #ffcccc;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}

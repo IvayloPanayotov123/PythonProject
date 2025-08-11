@@ -1,24 +1,24 @@
-.create-part-container {
+.edit-profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 70vh;
     background-color: #f8f8f8;
 }
 
-.create-part-box {
+.edit-profile-box {
     background-color: #84aeb3;
-    padding: 2rem;
+    padding: 2rem 2.5rem;
     border: 2px solid #000;
     border-radius: 12px;
-    min-width: 320px;
+    min-width: 340px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    color: white;
+    color: #fff;
 }
 
-.create-part-box h2 {
+.edit-profile-box h2 {
     text-align: center;
-    font-size: 1.8rem;
+    color: #000;
     margin-bottom: 1.2rem;
 }
 
@@ -31,6 +31,7 @@
 .form-group label {
     margin-bottom: 0.4rem;
     font-weight: bold;
+    color: #000;
 }
 
 .form-group input {
@@ -38,21 +39,23 @@
     border: 1px solid #000;
     border-radius: 6px;
     font-size: 1rem;
+    background: #fff;
+    color: #000;
 }
 
-.submit-btn {
-    background-color: white;
-    color: black;
-    border: 2px solid black;
+.update-btn {
+    background-color: #2f6fe4;
+    color: #ffffff;
+    border: 2px solid #000;
     border-radius: 6px;
-    padding: 0.7rem;
+    padding: 0.8rem;
     font-size: 1.1rem;
     cursor: pointer;
     width: 100%;
 }
 
-.submit-btn:hover {
-    background-color: yellow;
+.update-btn:hover {
+    filter: brightness(0.95);
 }
 
 .error {

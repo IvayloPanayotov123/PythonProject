@@ -1,0 +1,147 @@
+.profile-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+    background: #f8f8f8;
+}
+
+.box {
+    background: #84aeb3;
+    color: #fff;
+    padding: 1.5rem;
+    border: 2px solid #000;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 50%;
+    margin: 0 auto;
+}
+
+.box h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.profile-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.25);
+}
+
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 700;
+    color: #000;
+}
+
+.value {
+    color: #fff;
+}
+
+.profile-actions {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.profile-actions .btn:first-child {
+    background-color: #ffd400;
+    color: #ffffff;
+    border: 2px solid #000;
+}
+
+.profile-actions .btn:nth-child(2) {
+    background-color: #2f6fe4;
+    color: #ffffff;
+    border: 2px solid #000;
+}
+
+.btn.pay {
+    color: #84aeb3;
+}
+
+.btn.danger {
+    color: #d64545;
+}
+
+.orders {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.order-card {
+    background: #ffffff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.order-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.order-title {
+    font-weight: 700;
+}
+
+.order-meta {
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 0.85rem;
+    background: #fff;
+}
+
+.badge.ok {
+    color: #27a567;
+}
+
+.badge.pending {
+    color: #d64545;
+}
+
+.order-details {
+    margin-top: 8px;
+}
+
+.order-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.profile-actions .btn {
+    text-decoration: none;
+    display: inline-block;
+}

@@ -6,7 +6,7 @@
 
     {% if user.is_authenticated %}
         <h1 class="bigger-text">Are you ready to build your dream PC?</h1>
-        <a href="/builds/" class="button">Construct</a>
+        <a href="{% url 'computer:create' %}" class="button">Construct</a>
     {% endif %}
 
     {% if not user.is_authenticated %}
@@ -18,7 +18,7 @@
     {% endif %}
 
     <h1 class="smaller-text">You can view all existing parts here</h1>
-    <a href="/parts/" class="button">View Parts</a>
+    <a href="{% url 'parts_list' %}" class="button">View Parts</a>
 
 </div>
 {% endblock %}

@@ -2,15 +2,16 @@
 
 <nav class="nav-bar">
     <ul class="nav-menu">
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="/parts/">Parts List</a></li>
+        <li><a href='{% url 'index' %}'>Home</a></li>
+        <li><a href='{% url 'parts_list' %}'>Parts List</a></li>
 
         {% if user|is_superuser_or_marketeer %}
-            <li><a href="/parts/manage/">Parts Edit</a></li>
+            <li><a href="{% url 'parts_manage' %}">Parts Edit</a></li>
         {% endif %}
 
         {% if user.is_authenticated %}
-            <li><a href="/create/">Create your own PC</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'computer:create' %}">Create your own PC</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
             <li><a href="{% url 'register' %}">Register</a></li>

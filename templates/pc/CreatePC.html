@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'common/repeatables.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/orderPc.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="create-pc-container">
+  <div class="create-pc-box">
+    <h2>Create PC</h2>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="error">
+          {% for err in form.non_field_errors %}{{ err }}{% endfor %}
+        </div>
+      {% endif %}
+
+      {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="error">{{ field.errors|striptags }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      {% if preview_price %}
+        <div class="price-preview">
+          <span>Calculated price:</span>
+          <strong>{{ preview_price }}</strong>
+        </div>
+      {% endif %}
+
+      <div class="actions">
+        <button type="submit" name="preview" class="preview-button">Preview price</button>
+        <button type="submit" class="order-button">Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

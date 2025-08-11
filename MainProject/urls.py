@@ -23,5 +23,6 @@ urlpatterns = [
     path('account/', include('accounts.urls')),
     path('parts/manage/cpus/', include('cpus.urls')),
     path('parts/manage/gpus/', include('gpus.urls')),
-    path('parts/manage/rams/', include('rams.urls'))
+    path('parts/manage/rams/', include('rams.urls')),
+    path('computer/', include('computer.urls')),
 ]
