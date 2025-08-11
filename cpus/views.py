@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.decorators.http import require_POST
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from .models import CPU
 from .forms import CPUForm
 
@@ -26,3 +26,13 @@ def delete_cpu(request, pk):
     cpu = get_object_or_404(CPU, pk=pk)
     cpu.delete()
     return redirect('parts_manage')
+
+class CPUUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = CPU
+    form_class = CPUForm
+    template_name = 'parts/editCPU.html'
+    success_url = reverse_lazy('parts_manage')
+
+    def test_func(self):
+        u = self.request.user
+        return u.is_superuser or u.groups.filter(name='Marketeers').exists()

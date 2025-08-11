@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'common/repeatables.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/edit.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Edit GPU: {{ object.name }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="update-button">Update</button>
+</form>
+{% endblock %}

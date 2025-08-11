@@ -19,4 +19,19 @@ class PartsListView(TemplateView):
 
 
 class PartsManageView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
-    pass
+    template_name = 'parts/parts.html'
+
+    def test_func(self):
+        u = self.request.user
+        return u.is_superuser or u.groups.filter(name='Marketeers').exists()
+
+    def handle_no_permission(self):
+        from django.shortcuts import redirect
+        return redirect('login')
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['rams'] = RAM.objects.all().order_by('-score', '-speed', '-gigabytes', 'name')
+        ctx['gpus'] = GPU.objects.all().order_by('-score', '-vram', 'name')
+        ctx['cpus'] = CPU.objects.all().order_by('-score', '-cores', 'name')
+        return ctx

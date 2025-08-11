@@ -29,7 +29,27 @@
     color: #fff;
 }
 
+.parts-col {
+    padding-bottom: 24px;
+}
+
 .add-new {
-    margin-top: 10px;
+    margin-top: 24px;
     text-align: center;
+}
+
+.add-new .button {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 6px;
+    color: #000;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.add-new .button:hover {
+    background: #f5f5f5;
 }

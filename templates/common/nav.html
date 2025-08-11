@@ -5,8 +5,8 @@
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="/parts/">Parts List</a></li>
 
-        {% if user|is_marketeer %}
-            <li><a href="/parts/">Parts Changes</a></li>
+        {% if user|is_superuser_or_marketeer %}
+            <li><a href="/parts/manage/">Parts Edit</a></li>
         {% endif %}
 
         {% if user.is_authenticated %}

@@ -7,7 +7,7 @@
 }
 
 .create-part-box {
-    background-color: #27a567;
+    background-color: #84aeb3;
     padding: 2rem;
     border: 2px solid #000;
     border-radius: 12px;
@@ -41,7 +41,7 @@
 }
 
 .submit-btn {
-    background-color: #27a567;
+    background-color: white;
     color: white;
     border: 2px solid black;
     border-radius: 6px;
@@ -52,7 +52,7 @@
 }
 
 .submit-btn:hover {
-    background-color: #1f8c52;
+    background-color: gray;
 }
 
 .error {
