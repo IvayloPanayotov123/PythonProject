@@ -1,0 +1,54 @@
+{% extends 'common/repeatables.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="orders-page">
+	<section class="orders-box">
+		<h2>Order list</h2>
+
+		{% if orders %}
+			<ul class="orders-list">
+				{% for order in orders %}
+					<li class="order-item">
+						<div class="order-header">
+							<div class="order-title">
+								{{ order.user.username }} - {{ order.pc.name }}
+							</div>
+							<div class="order-badges">
+								<span class="badge {% if order.confirmed %}ok{% else %}pending{% endif %}">
+									{% if order.confirmed %}Confirmed{% else %}Not confirmed{% endif %}
+								</span>
+								<span class="badge {% if order.delivered %}ok{% else %}pending{% endif %}">
+									{% if order.delivered %}Delivered{% else %}Not delivered{% endif %}
+								</span>
+							</div>
+						</div>
+
+						<div class="order-actions">
+							{% if not order.confirmed %}
+								<form method="post" action="{% url 'orders:confirm' order.pk %}">
+									{% csrf_token %}
+									<button type="submit" class="btn btn-confirm">Confirm</button>
+								</form>
+							{% endif %}
+
+							{% if not order.delivered %}
+								<form method="post" action="{% url 'orders:delivered' order.pk %}">
+									{% csrf_token %}
+									<button type="submit" class="btn btn-delivered">Delivered</button>
+								</form>
+							{% endif %}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p class="empty">No orders found.</p>
+		{% endif %}
+	</section>
+</div>
+{% endblock %}

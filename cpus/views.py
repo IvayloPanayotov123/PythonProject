@@ -8,7 +8,7 @@ from .models import CPU
 from .forms import CPUForm
 
 def is_marketeer_or_superuser(user):
-    return user.is_authenticated and (user.is_superuser or user.groups.filter(name="Marketeers").exists())
+    return user.is_authenticated and (user.is_superuser or user.groups.filter(name="Suppliers").exists())
 
 class CPUCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = CPU
@@ -35,4 +35,4 @@ class CPUUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         u = self.request.user
-        return u.is_superuser or u.groups.filter(name='Marketeers').exists()
+        return u.is_superuser or u.groups.filter(name='Suppliers').exists()

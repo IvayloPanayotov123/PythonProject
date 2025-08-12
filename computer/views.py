@@ -1,9 +1,9 @@
 from decimal import Decimal
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from computer.models import Computer
-from computer.forms import ComputerCreateForm
+from computer.forms import ComputerCreateForm, ComputerEditForm
 from orders.models import Order
 
 class ComputerCreateView(LoginRequiredMixin, CreateView):
@@ -32,3 +32,12 @@ class ComputerCreateView(LoginRequiredMixin, CreateView):
             Order.objects.create(user=request.user, pc=self.object)
             return response
         return self.form_invalid(form)
+
+class ComputerUpdateView(LoginRequiredMixin, UpdateView):
+    model = Computer
+    form_class = ComputerEditForm
+    template_name = "pc/editPC.html"
+    success_url = reverse_lazy("profile")
+
+    def get_queryset(self):
+        return Computer.objects.filter(creator=self.request.user)

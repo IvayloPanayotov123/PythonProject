@@ -8,3 +8,8 @@ class ComputerCreateForm(forms.ModelForm):
         widgets = {
             "name": forms.TextInput(attrs={"placeholder": "Name your PC"}),
         }
+
+class ComputerEditForm(forms.ModelForm):
+    class Meta:
+        model = Computer
+        fields = ["ram", "gpu", "cpu"]

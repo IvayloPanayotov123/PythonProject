@@ -23,7 +23,7 @@ class PartsManageView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
     def test_func(self):
         u = self.request.user
-        return u.is_superuser or u.groups.filter(name='Marketeers').exists()
+        return u.is_superuser or u.groups.filter(name='Suppliers').exists()
 
     def handle_no_permission(self):
         from django.shortcuts import redirect

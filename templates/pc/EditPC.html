@@ -1,10 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'common/repeatables.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/orderPc.css' %}">
+<style>
+	.create-pc-box .order-button {
+		display: block;
+		margin: 0.75rem auto 0;
+		width: auto;
+		padding: 0.8rem 1.25rem;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="create-pc-container">
+	<div class="create-pc-box">
+		<h2>Edit PC: {{ object.name }}</h2>
+
+		<form method="post" novalidate>
+			{% csrf_token %}
+
+			{% if form.non_field_errors %}
+			<div class="error">
+				{% for err in form.non_field_errors %}
+					{{ err }}
+				{% endfor %}
+			</div>
+			{% endif %}
+
+			<div class="form-group">
+				<label for="{{ form.ram.id_for_label }}">RAM</label>
+				{{ form.ram }}
+				{% if form.ram.errors %}
+				<div class="error">{{ form.ram.errors|striptags }}</div>
+				{% endif %}
+			</div>
+
+			<div class="form-group">
+				<label for="{{ form.gpu.id_for_label }}">GPU</label>
+				{{ form.gpu }}
+				{% if form.gpu.errors %}
+				<div class="error">{{ form.gpu.errors|striptags }}</div>
+				{% endif %}
+			</div>
+
+			<div class="form-group">
+				<label for="{{ form.cpu.id_for_label }}">CPU</label>
+				{{ form.cpu }}
+				{% if form.cpu.errors %}
+				<div class="error">{{ form.cpu.errors|striptags }}</div>
+				{% endif %}
+			</div>
+
+			<button type="submit" class="order-button">Update</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

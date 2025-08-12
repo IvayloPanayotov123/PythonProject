@@ -1,0 +1,11 @@
+python manage.py setup_admin_groups
+
+This will setup admin groups Merchants and Suppliers(previously named Marketeers but sounded illogical so changed it)
+
+python manage.py setup_staff_accounts
+
+will create staff accounts with usernames Trayan(suppliers) and Nikola(Merchants), each with a password of ManThe21st
+
+Suppliers are supposed to change/add/delete available parts for creation of computers
+
+Merchants can confirm/deliver orders

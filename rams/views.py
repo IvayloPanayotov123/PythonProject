@@ -8,7 +8,7 @@ from .models import RAM
 from .forms import RAMForm
 
 def is_marketeer_or_superuser(user):
-    return user.is_authenticated and (user.is_superuser or user.groups.filter(name="Marketeers").exists())
+    return user.is_authenticated and (user.is_superuser or user.groups.filter(name="Suppliers").exists())
 
 class RAMCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = RAM

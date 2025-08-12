@@ -8,73 +8,76 @@
 {% block content %}
 <div class="profile-page">
 
-  <section class="box">
-    <h2>Your Profile</h2>
+	<section class="box">
+		<h2>Your Profile</h2>
 
-    <div class="profile-row">
-      <span class="label">Name</span>
-      <span class="value">{{ user.first_name }} {{ user.last_name }}</span>
-    </div>
-    <div class="profile-row">
-      <span class="label">Address</span>
-      <span class="value">{{ user.address|default:"—" }}</span>
-    </div>
-    <div class="profile-row">
-      <span class="label">Phone</span>
-      <span class="value">{{ user.phone_number|default:"—" }}</span>
-    </div>
+		<div class="profile-row">
+			<span class="label">Name</span>
+			<span class="value">{{ user.first_name }} {{ user.last_name }}</span>
+		</div>
+		<div class="profile-row">
+			<span class="label">Address</span>
+			<span class="value">{{ user.address|default:"—" }}</span>
+		</div>
+		<div class="profile-row">
+			<span class="label">Phone</span>
+			<span class="value">{{ user.phone_number|default:"—" }}</span>
+		</div>
 
-    <form id="pw-form" method="post" action="{% url 'profile' %}">
-      {% csrf_token %}
-      <input type="hidden" name="action" value="change_password">
-      <div class="profile-row">
-        <span class="label">New password</span>
-        <span class="value">
-          {{ pw_form.new_password }}
-          {% if pw_form.new_password.errors %}
-            <div class="error">{{ pw_form.new_password.errors|striptags }}</div>
-          {% endif %}
-        </span>
-      </div>
-    </form>
-  </section>
+		<form id="pw-form" method="post" action="{% url 'profile' %}">
+			{% csrf_token %}
+			<input type="hidden" name="action" value="change_password">
+			<div class="profile-row">
+				<span class="label">New password</span>
+				<span class="value">
+					{{ pw_form.new_password }}
+					{% if pw_form.new_password.errors %}
+						<div class="error">{{ pw_form.new_password.errors|striptags }}</div>
+					{% endif %}
+				</span>
+			</div>
+		</form>
+	</section>
 
-  <div class="profile-actions">
-    <button type="submit" form="pw-form" class="btn">Change password</button>
-    <a class="btn action" href="{% url 'profile_edit' %}">Edit profile information</a>
-  </div>
+	<div class="profile-actions">
+		<button type="submit" form="pw-form" class="btn">Change password</button>
+		<a class="btn action" href="{% url 'profile_edit' %}">Edit profile information</a>
+	</div>
 
-  <section class="box">
-    <h2>Your Orders</h2>
-    {% if orders %}
-      <ul class="orders">
-        {% for order in orders %}
-          <li class="order-card">
-            <div class="order-main">
-              <div class="order-title">Order #{{ order.pk }} — {{ order.pc.name }}</div>
-              <div class="order-meta">
-                <span class="badge {% if order.confirmed %}ok{% else %}pending{% endif %}">
-                  {% if order.confirmed %}Confirmed{% else %}Not confirmed{% endif %}
-                </span>
-                <span class="badge {% if order.delivered %}ok{% else %}pending{% endif %}">
-                  {% if order.delivered %}Delivered{% else %}Not delivered{% endif %}
-                </span>
-              </div>
-            </div>
-            <div class="order-details">
-              Price: <strong>{{ order.pc.price }}</strong>
-            </div>
-            <div class="order-actions">
-              <button type="button" class="btn pay">Pay</button>
-              <button type="button" class="btn danger">Delete</button>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p class="empty">You have no orders yet.</p>
-    {% endif %}
-  </section>
+	<section class="box">
+		<h2>Your Orders</h2>
+		{% if orders %}
+			<ul class="orders">
+				{% for order in orders %}
+					<li class="order-card">
+						<div class="order-main">
+							<div class="order-title">Order #{{ order.pk }} — {{ order.pc.name }}</div>
+							<div class="order-meta">
+								<span class="badge {% if order.confirmed %}ok{% else %}pending{% endif %}">
+									{% if order.confirmed %}Confirmed{% else %}Not confirmed{% endif %}
+								</span>
+								<span class="badge {% if order.delivered %}ok{% else %}pending{% endif %}">
+									{% if order.delivered %}Delivered{% else %}Not delivered{% endif %}
+								</span>
+							</div>
+						</div>
+						<div class="order-details">
+							Price: <strong>{{ order.pc.price }}</strong>
+						</div>
+						<div class="order-actions">
+							<a class="btn pay" href="{% url 'computer:edit' order.pc.pk %}">Edit</a>
+							<form method="post" action="{% url 'orders:delete' order.pk %}">
+								{% csrf_token %}
+								<button type="submit" class="btn danger">Delete</button>
+							</form>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p class="empty">You have no orders yet.</p>
+		{% endif %}
+	</section>
 
 </div>
 {% endblock %}
